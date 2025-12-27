@@ -1,9 +1,11 @@
+import { Link } from 'react-router'
 import Header from '../components/Header'
 import '../index.css'
 import './order.css'
 const OrderPage = () => {
     return (
         <>
+        <link rel="icon" href="/public/images/orders-favicon.png" />
         <title>Order</title>
             <Header />
 
@@ -53,11 +55,11 @@ const OrderPage = () => {
                         </div>
 
                         <div className="product-actions">
-                        <a href="tracking.html">
+                        <Link to="/tracking">
                             <button className="track-package-button button-secondary">
                             Track package
                             </button>
-                        </a>
+                        </Link>
                         </div>
 
                         <div className="product-image-container">
@@ -81,11 +83,11 @@ const OrderPage = () => {
                         </div>
 
                         <div className="product-actions">
-                        <a href="tracking.html">
+                        <Link to="/tracking">
                             <button className="track-package-button button-secondary">
                             Track package
                             </button>
-                        </a>
+                        </Link>
                         </div>
                     </div>
                     </div>
@@ -132,11 +134,11 @@ const OrderPage = () => {
                         </div>
 
                         <div className="product-actions">
-                        <a href="tracking.html">
+                        <Link to="/tracking">
                             <button className="track-package-button button-secondary">
                             Track package
                             </button>
-                        </a>
+                        </Link>
                         </div>
                     </div>
                     </div>

@@ -4,6 +4,7 @@ import Header from '../components/Header'
 const HomePage = () => {
     return (
         <>
+        <link rel="icon" href="/public/images/home-favicon.png" />
         <title>Ecommerce-project</title>
             <Header />
             <div className="home-page">
