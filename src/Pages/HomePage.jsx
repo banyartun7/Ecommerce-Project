@@ -3,10 +3,15 @@ import Header from "../components/Header";
 import { products } from "../assets/data/products";
 
 const HomePage = () => {
+  fetch("http://localhost:3000/api/products").then((response) => {
+    return response.json()
+    }).then((data)=>{
+      console.log(data)
+  })
   return (
     <>
       <link rel="icon" href="/public/images/home-favicon.png" />
-      <title>Ecommerce-project</title>
+      <title>Ecommerce Project</title>
       <Header />
       <div className="home-page">
         <div className="products-grid">
@@ -32,7 +37,7 @@ const HomePage = () => {
                   <div className="product-rating-count link-primary">{product.rating.count}</div>
                 </div>
 
-                <div className="product-price">{(product.priceCents / 100).toFixed(2)}</div>
+                <div className="product-price">${(product.priceCents / 100).toFixed(2)}</div>
 
                 <div className="product-quantity-container">
                   <select>
