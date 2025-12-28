@@ -1,5 +1,6 @@
 import "./Checkout.css";
 import CheckoutHeader from "./CheckoutHeader";
+import formatMoney from "../../utils/money";
 
 const CheckoutPage = ({cart}) => {
 
@@ -15,9 +16,9 @@ const CheckoutPage = ({cart}) => {
 
         <div className="checkout-grid">
           <div className="order-summary">
-            {cart.map((cart) => {
+            {cart.map((cartItem) => {
               return (
-                <div className="cart-item-container">
+                <div key={cartItem.productId} className="cart-item-container">
                   <div className="delivery-date">
                     Delivery date: Tuesday, June 21
                   </div>
@@ -25,17 +26,17 @@ const CheckoutPage = ({cart}) => {
                   <div className="cart-item-details-grid">
                     <img
                       className="product-image"
-                      src="images/products/athletic-cotton-socks-6-pairs.jpg"
+                      src={cartItem.product.image}
                     />
 
                     <div className="cart-item-details">
                       <div className="product-name">
-                        Black and Gray Athletic Cotton Socks - 6 Pairs
+                        {cartItem.product.name}
                       </div>
-                      <div className="product-price">$10.90</div>
+                      <div className="product-price">{ formatMoney(cartItem.product.priceCents) }</div>
                       <div className="product-quantity">
                         <span>
-                          Quantity: <span className="quantity-label">2</span>
+                          Quantity: <span className="quantity-label">{cartItem.quantity}</span>
                         </span>
                         <span className="update-quantity-link link-primary">
                           Update
