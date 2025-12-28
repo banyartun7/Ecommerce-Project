@@ -4,6 +4,7 @@ import './App.css'
 import CheckoutPage from './Pages/checkout/CheckoutPage'
 import OrderPage from './Pages/OrderPage'
 import TrackingPage from './Pages/TrackingPage'
+import PageNotFound from './Pages/PageNotFound'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Route path='/checkout' element={<CheckoutPage />} />
       <Route path='/order' element={<OrderPage />}/>
       <Route path='/tracking' element={<TrackingPage />} />
+      <Route path='*' element={<PageNotFound />}></Route>
     </Routes>
   )
 }
