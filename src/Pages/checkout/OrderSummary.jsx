@@ -1,6 +1,6 @@
-import formatMoney from "../../utils/money";
-import dayjs from "dayjs";
 import DeliveryOptions from "./DeliveryOptions";
+import CartItemDetail from "./CartItemDetail";
+import DeliveryDate from "./DeliveryDate";
 
 const OrderSummary = ({ deliveryOptions, cart }) => {
   return (
@@ -15,38 +15,16 @@ const OrderSummary = ({ deliveryOptions, cart }) => {
 
           return (
             <div key={cartItem.productId} className="cart-item-container">
-              <div className="delivery-date">
-                Delivery date:{" "}
-                {dayjs(selectDeliveryOption.estimatedDeliveryTimeMs).format(
-                  "dddd, MMMM D"
-                )}
-              </div>
+             
+             <DeliveryDate selectDeliveryOption = { selectDeliveryOption }/>
 
               <div className="cart-item-details-grid">
-                <img className="product-image" src={cartItem.product.image} />
+                <CartItemDetail cartItem={cartItem} />
 
-                <div className="cart-item-details">
-                  <div className="product-name">{cartItem.product.name}</div>
-                  <div className="product-price">
-                    {formatMoney(cartItem.product.priceCents)}
-                  </div>
-                  <div className="product-quantity">
-                    <span>
-                      Quantity:{" "}
-                      <span className="quantity-label">
-                        {cartItem.quantity}
-                      </span>
-                    </span>
-                    <span className="update-quantity-link link-primary">
-                      Update
-                    </span>
-                    <span className="delete-quantity-link link-primary">
-                      Delete
-                    </span>
-                  </div>
-                </div>
-                <DeliveryOptions cartItem = { cartItem } 
-                    deliveryOptions = { deliveryOptions } />
+                <DeliveryOptions
+                  cartItem={cartItem}
+                  deliveryOptions={deliveryOptions}
+                />
               </div>
             </div>
           );

@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import './CheckoutHeader.css'
 import logo from '../../assets/images/logo.png'
 import mobileLogo from '../../assets/images/mobile-logo.png'
-const CheckoutHeader = () => {
+const CheckoutHeader = ({ totalQuantity }) => {
     return (
         <>
             <div className="checkout-header">
@@ -16,7 +16,7 @@ const CheckoutHeader = () => {
 
                     <div className="checkout-header-middle-section">
                     Checkout (<a className="return-to-home-link"
-                        href="/">3 items</a>)
+                        href="/">{totalQuantity} items</a>)
                     </div>
 
                     <div className="checkout-header-right-section">

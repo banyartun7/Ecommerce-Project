@@ -7,9 +7,12 @@ const OrderPage = ({ cart }) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/orders?expand=products").then((response) => {
+    const fetchOrderData = async () => {
+      const response = await axios.get("/api/orders?expand=products");
       setOrders(response.data);
-    });
+    };
+
+    fetchOrderData();
   }, []);
 
   return (
@@ -21,7 +24,7 @@ const OrderPage = ({ cart }) => {
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 
-        <OrderGrid orders = { orders } />
+        <OrderGrid orders={orders} />
       </div>
     </>
   );

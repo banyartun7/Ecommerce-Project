@@ -10,35 +10,34 @@ const CheckoutPage = ({ cart }) => {
   const [paymentSummary, setPaymentSummary] = useState(null);
 
   useEffect(() => {
-
     const fetchCheckoutData = async () => {
-      let response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
+      let response = await axios.get(
+        "/api/delivery-options?expand=estimatedDeliveryTime"
+      );
       setDeliveryOptions(response.data);
 
       response = await axios.get("/api/payment-summary");
       setPaymentSummary(response.data);
-    }
-    
-    fetchCheckoutData()
-   
+    };
+
+    fetchCheckoutData();
   }, []);
 
   return (
     <>
       <link rel="icon" href="/public/images/cart-favicon.png" />
       <title>Checkout</title>
-
-      <CheckoutHeader />
+      {paymentSummary && (
+        <CheckoutHeader totalQuantity={paymentSummary.totalItems} />
+      )}
 
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
 
         <div className="checkout-grid">
-          
-          <OrderSummary deliveryOptions = { deliveryOptions } cart = { cart }/>
+          <OrderSummary deliveryOptions={deliveryOptions} cart={cart} />
 
-          <PaymentSummary paymentSummary = { paymentSummary }/>
-
+          <PaymentSummary paymentSummary={paymentSummary} />
         </div>
       </div>
     </>
