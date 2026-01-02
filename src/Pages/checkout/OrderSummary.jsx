@@ -1,6 +1,7 @@
 import DeliveryOptions from "./DeliveryOptions";
 import CartItemDetail from "./CartItemDetail";
 import DeliveryDate from "./DeliveryDate";
+import axios from "axios";
 
 const OrderSummary = ({ deliveryOptions, cart, loadCart }) => {
   return (
@@ -13,12 +14,20 @@ const OrderSummary = ({ deliveryOptions, cart, loadCart }) => {
             }
           );
 
+          const deleteCartItem = async () => {
+            await axios.delete(`/api/cart-items/${cartItem.productId}`);
+            await loadCart();
+          };
+
           return (
             <div key={cartItem.productId} className="cart-item-container">
               <DeliveryDate selectDeliveryOption={selectDeliveryOption} />
 
               <div className="cart-item-details-grid">
-                <CartItemDetail cartItem={cartItem} />
+                <CartItemDetail
+                  cartItem={cartItem}
+                  deleteCartItem={deleteCartItem}
+                />
 
                 <DeliveryOptions
                   cartItem={cartItem}
