@@ -8,7 +8,7 @@ const Product = ({ product, loadCart }) => {
     async () => {
       await axios.post("/api/cart-items", {
         productId: product.id,
-        quantity: quantity,
+        quantity,
       });
       await loadCart();
     };
@@ -20,7 +20,7 @@ const Product = ({ product, loadCart }) => {
       setQuantity(querySelected);
     };
   };
-  
+
   return (
     <div className="product-container">
       <div className="product-image-container">
