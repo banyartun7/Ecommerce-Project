@@ -39,21 +39,9 @@ const TrackingPage = ({ cart }) => {
     deliveryPercent = 100;
   }
 
-  let isPreparing = false;
-  let isShipped = false;
-  let isDelivered = false;
-
-  if (deliveryPercent < 33) {
-    isPreparing = true;
-  }
-
-  if (deliveryPercent >= 33 && deliveryPercent < 100) {
-    isShipped = true;
-  }
-
-  if (deliveryPercent === 100) {
-    isDelivered = true;
-  }
+  const isPreparing = deliveryPercent < 33;
+  const isShipped = deliveryPercent >= 33 && deliveryPercent < 100;
+  const isDelivered = deliveryPercent === 100;
 
   return (
     <>
