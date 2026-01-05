@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import "./order.css";
 import OrderGrid from "./OrdersGrid";
-const OrderPage = ({ cart }) => {
+const OrderPage = ({ cart, loadCart }) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const OrderPage = ({ cart }) => {
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 
-        <OrderGrid orders={orders} />
+        <OrderGrid orders={orders} loadCart={loadCart} />
       </div>
     </>
   );

@@ -3,22 +3,25 @@ import axios from "axios";
 import { useState } from "react";
 const Product = ({ product, loadCart }) => {
   const [quantity, setQuantity] = useState(1);
+  const [check, setCheck] = useState(false);
 
-  const addToCart = () => {
-    async () => {
-      await axios.post("/api/cart-items", {
-        productId: product.id,
-        quantity,
-      });
-      await loadCart();
-    };
+  const addToCart = async () => {
+    await axios.post("/api/cart-items", {
+      productId: product.id,
+      quantity,
+    });
+    await loadCart();
+
+    setCheck(true);
+
+    setTimeout(() => {
+      setCheck(false);
+    }, 2000);
   };
 
-  const selectQuantity = () => {
-    (event) => {
-      const querySelected = Number(event.target.value);
-      setQuantity(querySelected);
-    };
+  const selectQuantity = (event) => {
+    const querySelected = Number(event.target.value);
+    setQuantity(querySelected);
   };
 
   return (
@@ -58,7 +61,7 @@ const Product = ({ product, loadCart }) => {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart">
+      <div className="added-to-cart" style={{ opacity: check ? 1 : 0 }}>
         <img src="images/icons/checkmark.png" />
         Added
       </div>
