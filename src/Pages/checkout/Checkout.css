@@ -14,6 +14,14 @@
   margin-right: auto;
 }
 
+.textbox{
+  display: inline-block;
+}
+
+.textbox-invisible{
+  display: none;
+}
+
 .checkout-page .page-title {
   font-weight: 700;
   font-size: 22px;
