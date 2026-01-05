@@ -8,11 +8,11 @@ const OrderDetails = ({ order, loadCart }) => {
     <div className="order-details-grid">
       {order.products.map((orderProduct) => {
         const addToCart = async () => {
-            await axios.post("/api/cart-items", {
-              productId: orderProduct.product.id,
-              quantity: 1
-            });
-            await loadCart();
+          await axios.post("/api/cart-items", {
+            productId: orderProduct.product.id,
+            quantity: 1,
+          });
+          await loadCart();
         };
         return (
           <Fragment key={orderProduct.product.id}>

@@ -26,8 +26,7 @@ const OrderGrid = ({ orders, loadCart }) => {
               </div>
             </div>
 
-            <OrderDetails order = { order } loadCart = { loadCart } />
-
+            <OrderDetails order={order} loadCart={loadCart} />
           </div>
         );
       })}

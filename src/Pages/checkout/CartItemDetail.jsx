@@ -23,6 +23,22 @@ const CartItemDetail = ({ cartItem, deleteCartItem, loadCart }) => {
     setQuantity(selectedValueInInputBox);
   };
 
+  const updateQunatity = async (event) => {
+    if (event.key === "Enter") {
+      await axios.put(`/api/cart-items/${cartItem.productId}`, {
+        quantity,
+      });
+      await loadCart();
+      setTextBox(false);
+    } else if (event.key === "Escape") {
+      await axios.put(`/api/cart-items/${cartItem.productId}`, {
+        quantity: cartItem.quantity,
+      });
+      await loadCart();
+      setTextBox(false);
+    }
+  };
+
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
@@ -38,6 +54,7 @@ const CartItemDetail = ({ cartItem, deleteCartItem, loadCart }) => {
             <input
               type="text"
               value={quantity}
+              onKeyDown={updateQunatity}
               onChange={selectedQuantity}
               className={textbox ? "textbox" : "textbox-invisible"}
               style={{ width: "50px" }}
